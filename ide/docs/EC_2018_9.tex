@@ -1,0 +1,101 @@
+\documentclass[a4paper,11pt,twocolumn]{article}
+\usepackage[a4paper,left=1.5cm,right=1cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{watermark}
+
+\graphicspath{{./figs}}
+\usepackage[colorlinks,linkcolor={black},citecolor={blue!80!black},urlcolor={blue!80!black}]{hyperref}
+\thiswatermark{\centering \put(-15,-100.0){\includegraphics[scale=0.3]{figs/logo.png}} }
+\title{\textbf{\textsc{CONVERSION FROM SOP TO POS FORM}}}
+\author{\textbf{\textit{PRASANTHI VELPULA (FWC22158)}}}
+
+
+\begin{document}
+\date{}
+\maketitle
+\tableofcontents
+\section{PROBLEM}
+\textbf{Q.9} A function $F(A, B, C)$ defined by three Boolean variables A, B and C when expressed as sum
+of products is given by \newline$ F = \brak{\overline{A} \cdot \overline{B} \cdot \overline{C}} + \brak{\overline{A} \cdot B \cdot \overline{C}} + \brak{A \cdot \overline{B} \cdot \overline{C}} $
+where, $\overline{A},\overline{B}$ and $\overline{C}$ are the complements of the respective variables. The product of sums (POS) form of the function F is
+%\renewcommand{\labelenumi}{\Alph{enumi}}
+	\begin{enumerate}[label=(\Alph*)]
+		\item $ \brak{A+B+C} \cdot \brak{A+\overline{B}+C} \cdot \brak{\overline{A}+B+C} $ 
+		\item $ \brak{\overline{A}+\overline{B}+\overline{C}} \cdot \brak{\overline{A}+B+\overline{C}} \cdot \brak{A+\overline{B}+\overline{C}} $
+		\item $ \brak{A+B+\overline{C}} \cdot \brak{A+\overline{B}+\overline{C}} \cdot \brak{\overline{A}+B+\overline{C}} \cdot \brak{\overline{A}+\overline{B}+C} \cdot \brak{\overline{A}+\overline{B}+C} $
+		\item $ \brak{\overline{A}+\overline{B}+C} \cdot \brak{\overline{A}+B+C} \cdot \brak{A+\overline{B}+C} \cdot \brak{A+B+\overline{C}} \cdot \brak{A+B+C} $
+
+        \end{enumerate}
+\bigskip
+
+\section{COMPONENTS}
+	\begin{tabularx}{0.45\textwidth}{
+	        	  | >{\centering\arraybackslash}X
+			  | >{\centering\arraybackslash}X
+			  | >{\centering\arraybackslash} X| }
+			 \hline
+			 Component & Value & Quantity \\
+			 \hline
+			 Arduino & Uno & 1 \\ 
+			 \hline
+			 Bread board & - & 1 \\
+			 \hline
+			 Jumper wires & M-M & 6 \\
+			 \hline
+			 Resistor & 1ohms & 1 \\  
+			 \hline
+			 LED & - & 1 \\
+			 \hline
+	\end{tabularx}
+\bigskip
+
+\section{INTRODUCTION}
+\textbf{SOP Expression} : SOP is useful for representing Boolean expressions as a sum of product terms and it employs minterms which are represented by 'm'. It is formed by considering all of the minterms whose output is HIGH (1) and when minterms are written for SOP, input with value 0 is treated as the input's complement.\newline
+\textbf{POS Expression} : POS is useful for representing Boolean expressions as a product of sum terms and it empolys maxterms which are represented by 'M'. It is formed by considering all of the max terms whose output is HIGH (0) and When max terms are written for POS, input with value 0 is treated as the variable.
+\bigskip
+
+\section{TRUTH TABLE}
+The truth table for the below expression is as follows:
+\newline  \textbf{(C)} $ \brak{A+B+\overline{C}} \cdot \brak{A+\overline{B}+\overline{C}} \cdot \brak{\overline{A}+B+\overline{C}} \cdot \brak{\overline{A}+\overline{B}+C} \cdot \brak{\overline{A}+\overline{B}+C} $
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{ |c |c |c |c | }
+		\hline
+		\newline
+		\textbf{A} & \textbf{B} & \textbf{C} & \textbf{F(A,B,C)}\\
+		\hline
+		0 & 0 & 0 & 1 \\
+                0 & 0 & 1 & 0 \\
+		0 & 1 & 0 & 1 \\
+		0 & 1 & 1 & 0 \\
+		1 & 0 & 0 & 1 \\
+		1 & 0 & 1 & 0 \\
+		1 & 1 & 0 & 0 \\
+		1 & 1 & 1 & 0 \\
+		\hline
+        \end{tabular}
+  \caption{}
+\end{table}
+\bigskip
+
+\section{ARDUINO CONNECTIONS}
+
+\begin{enumerate}
+
+	\item The inputs $A,B$ and $C$ are connected to Arduino D2,D3,D4 pins and output $F(A,B,C)$ is connected to Arduino D5 pin .
+	\item The values for these inputs are conncted either to GND or 5V according to the truth table and the output pin is connected to anode of LED to display the output, also for limiting current resistor is used.
+\end{enumerate}
+\bigskip
+
+\section{CODE}
+\paragraph{}
+The Arduino code can be downloaded from the below link :
+\begin{center}
+\fbox{\parbox{8.5cm}{\url{https://github.com/PrasanthiVelpula/FWC_1/tree/main/ide/codes }}} 
+\end{center}
+\end{document}
